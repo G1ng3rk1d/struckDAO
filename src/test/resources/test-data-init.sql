@@ -58,9 +58,10 @@ INSERT INTO strucktodb."INTERACTION"(
 		  "INTERACTION_CREATE_DATE",
 		  "INTERACTION_ACTIVITY_DATE"
 		) VALUES (
-			740735330588995584,
+			775486781768753153,
 			'Gingerk1d',
 			'01',
+			null,
 			null,
 			sysdate,
 			sysdate
@@ -72,13 +73,15 @@ INSERT INTO strucktodb."INTERACTION"(
 		  "INTERACTION_USER",
 		  "INTERACTION_PROCESSED",
 		  "INTERACTION_RESULT",
+		  "INTERACTION_RESULT_TWEET_ID",
 		  "INTERACTION_CREATE_DATE",
 		  "INTERACTION_ACTIVITY_DATE"
 		) VALUES (
-			740735330588995584,
+			775486781768753153,
 			'Gingerk1d',
 			'03',
-			null,
+			740735330588995584,
+			'Test response',
 			sysdate,
 			sysdate
 		);   		
