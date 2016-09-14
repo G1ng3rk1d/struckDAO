@@ -1,5 +1,7 @@
 package ca.gkwb.struck.incident.dao;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +17,7 @@ public class StruckTOIncidentDAOTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("context-DAO.xml");
 		System.setProperty("spring.profiles.active", "test1");
 		stiDAO = (IncidentDAO)context.getBean("struckTOIncidentDAO");
 	}	
@@ -44,5 +46,18 @@ public class StruckTOIncidentDAOTest {
 			e.printStackTrace();
 			Assert.notNull(null);
 		}
-	}	
+	}
+	
+	@Test
+	@Transactional
+	public void testQueryByLocationId() {
+		try {
+			List<IncidentVO> stiVOs = stiDAO.queryByLocationId(5);
+			Assert.isTrue(stiVOs.size() == 1);
+			Assert.isTrue(stiVOs.get(0).getIncidentId() == 1);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.notNull(null);
+		}
+	}		
 }

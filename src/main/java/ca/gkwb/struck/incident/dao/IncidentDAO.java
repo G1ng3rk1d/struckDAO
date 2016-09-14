@@ -64,4 +64,6 @@ public interface IncidentDAO {
 	public List<IncidentVO> queryAll(IncidentVO stVO)	 
 			throws NoRowFoundException, GenericDBException;
 
+	public List<IncidentVO> queryByLocationId(int id) throws NoRowFoundException, GenericDBException;
+
 }

@@ -2,7 +2,9 @@ package ca.gkwb.struck.incident.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
@@ -50,6 +52,13 @@ public class IncidentDAOImpl extends JdbcDaoSupport implements IncidentDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	private final String QUERY_ALL_BY_LOCATION = "SELECT * FROM strucktodb.\"INCIDENT\" WHERE "
+			+ "\"INCIDENT_LOCATION_ID\" = ?";
+	
+	public List<IncidentVO> queryByLocationId(int id) throws NoRowFoundException, GenericDBException {
+		return getJdbcTemplate().query(QUERY_ALL_BY_LOCATION, new Object[]{id}, new StruckTOIncidentRowMapper());
+	}	
 	
 	public class StruckTOIncidentRowMapper implements RowMapper
 	{
